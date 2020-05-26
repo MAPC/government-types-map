@@ -1,11 +1,37 @@
 const valueList = {
   'Policy Board': ['Selectmen', 'Select Board'],
   'Legislative Body': ['Open Town Meeting', 'Representative Town Meeting'],
+  'Chief Municipal Offiical': [
+    'Administrative Coordinator',
+    'Chief Administrative Officer',
+    'Executive Director',
+    'Executive Secretary',
+    'Executive Assistant',
+    'General Manager',
+    'Municipal Assistant',
+    'Town Administrator',
+    'Town Coordinator',
+    'Town Manager',
+    'Mayor',
+  ],
 };
 
 const rangeList = {
   'Policy Board': ['#0063e6', '#ff5a50'],
   'Legislative Body': ['#0063e6', '#ff5a50'],
+  'Chief Municipal Offiical': [
+    '#a6cee3',
+    '#1f78b4',
+    '#b2df8a',
+    '#33a02c',
+    '#fb9a99',
+    '#e31a1c',
+    '#fdbf6f',
+    '#ff7f00',
+    '#cab2d6',
+    '#6a3d9a',
+    '#ffff99',
+  ],
 };
 
 function createMap(data) {
@@ -43,7 +69,7 @@ function createMap(data) {
     .attr('x', 0)
     .attr('y', 400)
     .attr('width', 250)
-    .attr('height', 140)
+    .attr('height', 300)
     .style('stroke-width', 1)
     .style('stroke', 'rgb(0,0,0)')
     .style('fill', 'rgb(255,255,255,.5)');
@@ -133,12 +159,13 @@ function addZoomToMaps() {
 
 window.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    d3.json('/government-types-map/assets/data/ma-municipal-government-forms-and-finances.json'),
+    d3.json(
+      '/government-types-map/assets/data/ma-municipal-government-forms-and-finances.json'
+    ),
   ]).then(data => {
     const topology = topojson.feature(data[0], data[0].objects['layer1']);
     createMap(topology.features);
     addZoomToMaps();
     addUpdateButtons();
-    createForce(topologyfeatures);;
   });
 });
