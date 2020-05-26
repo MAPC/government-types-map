@@ -133,7 +133,7 @@ function addZoomToMaps() {
 
 window.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    d3.json('/assets/data/ma-municipal-government-forms-and-finances.json'),
+    d3.json('/government-types-map/assets/data/ma-municipal-government-forms-and-finances.json'),
   ]).then(data => {
     const topology = topojson.feature(data[0], data[0].objects['layer1']);
     createMap(topology.features);
