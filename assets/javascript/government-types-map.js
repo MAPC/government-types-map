@@ -42,7 +42,7 @@ function createMap(data) {
     .append('rect')
     .attr('x', 0)
     .attr('y', 400)
-    .attr('width', 150)
+    .attr('width', 250)
     .attr('height', 140)
     .style('stroke-width', 1)
     .style('stroke', 'rgb(0,0,0)')
