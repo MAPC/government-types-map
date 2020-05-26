@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Municipal Government Types Map - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/javascript/topojson.min.js"></script>
+    <script src="/assets/javascript/d3.min.js"></script>
+    <script src="/assets/javascript/government-types-map.js"></script>
+  </head>
+  <body>
+    <div class="layer-select__wrapper">
+      <label for="layer-select" class="layer-select__label">Layer:</label>
+      <select class="layer-select toggle" id="layer-select">
+        <option value="Policy Board" class="layer-select__option">Policy Board</option>
+        <option value="Legislative Body" class="layer-select__option">Legislative Body</option>
+      </select>
+    </div>
+    <svg class="government-form-map" viewBox="0 0 900 700"></svg>
+  </body>
+</html>
