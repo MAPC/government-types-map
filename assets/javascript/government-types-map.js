@@ -149,13 +149,10 @@ function addZoomToMaps() {
   d3.select('.government-form-map').call(zoom);
 }
 
-// function createForce(data) {
-//   const simulation = d3.forceSimulation()
-//   .velocityDecay(0.2);
-
-//   simulation.nodes(d => d.properties)
-
-// }
+function createForce(data) {
+  const simulation = d3.forceSimulation(d => d.properties)
+  .velocityDecay(0.2);
+}
 
 window.addEventListener('DOMContentLoaded', () => {
   Promise.all([
@@ -167,5 +164,6 @@ window.addEventListener('DOMContentLoaded', () => {
     createMap(topology.features);
     addZoomToMaps();
     addUpdateButtons();
+    createForce(topology.features);
   });
 });
