@@ -1,6 +1,11 @@
 const valueList = {
   'Policy Board': ['Selectmen', 'Select Board'],
-  'Legislative Body': ['Open Town Meeting', 'Representative Town Meeting'],
+  'Legislative Body': [
+    'Open Town Meeting',
+    'Representative Town Meeting',
+    'Alderman',
+    'Council',
+  ],
   'Chief Municipal Official': [
     'Administrative Coordinator',
     'Chief Administrative Officer',
@@ -18,7 +23,7 @@ const valueList = {
 
 const rangeList = {
   'Policy Board': ['#0063e6', '#ff5a50'],
-  'Legislative Body': ['#0063e6', '#ff5a50'],
+  'Legislative Body': ['#17BECF', '#B07AA1', '#4E79A7', '#EDC948'],
   'Chief Municipal Official': [
     '#a6cee3',
     '#1f78b4',
@@ -149,9 +154,30 @@ function addZoomToMaps() {
   d3.select('.government-form-map').call(zoom);
 }
 
+function charge(d) {
+  return -forceStrength * Math.pow(d.radius, 2.0);
+}
+
 function createForce(data) {
-  const simulation = d3.forceSimulation(d => d.properties)
-  .velocityDecay(0.2);
+  const simulation = d3
+    .forceSimulation(d => d.properties)
+    .velocityDecay(0.2)
+    .force(
+      'x',
+      d3
+        .forceX()
+        .strength(0.3)
+        .x(window.innerWidth / 2)
+    )
+    .force(
+      'y',
+      d3
+        .forceY()
+        .strength(0.3)
+        .y(window.innerHeight / 2)
+    )
+    .force('charge', d3.forceManyBody().strength(charge))
+    .on('tick', ticked);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
