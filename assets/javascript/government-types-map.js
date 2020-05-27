@@ -1,7 +1,7 @@
 const valueList = {
   'Policy Board': ['Selectmen', 'Select Board'],
   'Legislative Body': ['Open Town Meeting', 'Representative Town Meeting'],
-  'Chief Municipal Offiical': [
+  'Chief Municipal Official': [
     'Administrative Coordinator',
     'Chief Administrative Officer',
     'Executive Director',
@@ -19,7 +19,7 @@ const valueList = {
 const rangeList = {
   'Policy Board': ['#0063e6', '#ff5a50'],
   'Legislative Body': ['#0063e6', '#ff5a50'],
-  'Chief Municipal Offiical': [
+  'Chief Municipal Official': [
     '#a6cee3',
     '#1f78b4',
     '#b2df8a',
