@@ -74,7 +74,7 @@ function createMap(data) {
     .attr('x', 0)
     .attr('y', 400)
     .attr('width', 250)
-    .attr('height', 300)
+    .attr('height', '4rem') // number of entries times vertical height
     .style('stroke-width', 1)
     .style('stroke', 'rgb(0,0,0)')
     .style('fill', 'rgb(255,255,255,.5)');
@@ -117,6 +117,9 @@ function updateMap() {
   );
 
   d3.selectAll('.legend > circle, .legend > text').remove();
+
+  d3.selectAll('.legend > rect')
+    .attr('height', `${16+(valueList[this.value].length *25)}px`)
 
   d3.select('.legend')
     .selectAll('circle')
@@ -190,6 +193,6 @@ window.addEventListener('DOMContentLoaded', () => {
     createMap(topology.features);
     addZoomToMaps();
     addUpdateButtons();
-    createForce(topology.features);
+    // createForce(topology.features);
   });
 });
