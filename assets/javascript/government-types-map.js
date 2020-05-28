@@ -69,7 +69,12 @@ function createMap(data) {
       tooltip.transition()
         .duration(200)
         .style('opacity', .9);
-      tooltip.html(d.properties['TOWN'].toLowerCase())
+      tooltip.html(
+        d.properties['TOWN'].toLowerCase() + '<br>' +
+        d.properties['Policy Board'].toLowerCase() + '<br>' +
+        d.properties['Legislative Body'].toLowerCase() + '<br>' +
+        d.properties['Chief Municipal Official'].toLowerCase()
+        )
         .style('left', (d3.event.pageX) + 'px')
         .style('top', (d3.event.pageY - 28) + 'px');
     })
