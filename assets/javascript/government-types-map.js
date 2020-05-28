@@ -3,7 +3,7 @@ const valueList = {
   'Legislative Body': [
     'Open Town Meeting',
     'Representative Town Meeting',
-    'Alderman',
+    'Aldermen',
     'Council',
   ],
   'Chief Municipal Official': [
