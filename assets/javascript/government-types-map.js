@@ -48,6 +48,12 @@ function createMap(data) {
 
   const path = d3.geoPath().projection(null);
 
+  const tooltip = d3
+    .select('body')
+    .append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
   d3.select('.government-form-map')
     .append('g')
     .attr('class', 'government-form-map__data')
@@ -58,7 +64,20 @@ function createMap(data) {
     .attr('fill', d => colors(d.properties['Policy Board']))
     .attr('opacity', '0.8')
     .attr('class', 'government-form-map__municipality')
-    .attr('d', path);
+    .attr('d', path)
+    .on('mouseover', (d) => {
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', .9);
+      tooltip.html(d.properties['TOWN'].toLowerCase())
+        .style('left', (d3.event.pageX) + 'px')
+        .style('top', (d3.event.pageY - 28) + 'px');
+    })
+    .on('mouseout', () => {
+      tooltip.transition()
+        .duration(5000)
+        .style('opacity', 0);
+    })
 
   // Legend
 
@@ -99,6 +118,7 @@ function createMap(data) {
     .text(d => d)
     .attr('text-anchor', 'left')
     .style('alignment-baseline', 'middle');
+
 }
 
 function addUpdateButtons() {
